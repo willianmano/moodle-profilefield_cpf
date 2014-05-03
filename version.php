@@ -23,7 +23,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->version   = 2014041700;        // The current plugin version (Date: YYYYMMDDXX).
-$plugin->requires  = 2011120511;        // Requires this Moodle version.
+$plugin->requires  = 2012062500;        // Requires this Moodle version.
 $plugin->maturity = MATURITY_STABLE;
 $plugin->release  = 'Version for Moodle 2.2 onwards';
 $plugin->component = 'profilefield_cpf';        // Full name of the plugin (used for diagnostics).
