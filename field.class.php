@@ -6,7 +6,7 @@ class profile_field_cpf extends profile_field_base {
             'text',
             $this->inputname,
             format_string($this->field->name),
-            'maxlength="14" size="14" id="profilefield_cpf"'
+            'maxlength="14" size="14" id="profilefield_cpf" onkeyup=\'javascript: function mCPF(cpf){ cpf=cpf.replace(/\D/g,""); cpf=cpf.replace(/(\d{3})(\d)/,"$1.$2"); cpf=cpf.replace(/(\d{3})(\d)/,"$1.$2"); cpf=cpf.replace(/(\d{3})(\d{1,2})$/,"$1-$2"); return cpf; }; this.value = mCPF(this.value);\''
         );
         $mform->setType($this->inputname, PARAM_TEXT);
     }
