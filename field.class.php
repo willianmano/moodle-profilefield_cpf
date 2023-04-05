@@ -23,10 +23,14 @@ class profile_field_cpf extends profile_field_base {
     }
     private function exists($cpf = null, $userid = 0) {
         global $DB;
-        // Verifica se um número foi informado.
-        if (is_null($cpf)) {
+        // Verifica se um numero foi informado caso seja obrigatório.
+        if ($this->field->required && empty($cpf)) {
             return false;
         }
+       // Se não é obrigatório e está vazio, não tem nada para validar.
+        if (!$this->field->required && empty($cpf)) {
+            return true;
+       }
 
         $sql = "SELECT uid.data FROM {user_info_data} uid
                 INNER JOIN {user_info_field} uif ON uid.fieldid = uif.id
@@ -42,10 +46,14 @@ class profile_field_cpf extends profile_field_base {
         }
     }
     private function validatecpf($cpf = null) {
-        // Verifica se um numero foi informado.
-        if (is_null($cpf)) {
+        // Verifica se um numero foi informado caso seja obrigatório.
+        if ($this->field->required && empty($cpf)) {
             return false;
         }
+       // Se não é obrigatório e está vazio, não tem nada para validar.
+        if (!$this->field->required && empty($cpf)) {
+            return true;
+       }
         // Elimina possivel mascara.
         $cpf = preg_replace("/[^0-9]/", "", $cpf);
         $cpf = str_pad($cpf, 11, '0', STR_PAD_LEFT);
